@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/* SK Studio tokens — team jersey colours: pitch black with gold-to-amber stripes */
+@theme {
+  --color-pitch: #131210;
+  --color-pitch-2: #1d1b18;
+  --color-pitch-3: #2b2824;
+  --color-gold: #f0b323;
+  --color-gold-soft: #f7d47c;
+  --color-amber: #d9821e;
+  --color-ivory: #f6efe2;
+  --color-ivory-2: #ebe1cd;
+  --color-ink: #1a1815;
+  --color-smoke: #aaa296;
+  --color-clay: #6b6256;
+
+  --font-display: var(--font-bodoni), "Bodoni Moda", Didot, Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px; /* sticky header height */
+    background: var(--color-pitch);
+    overflow-x: clip;
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gold) var(--color-pitch);
+  }
+
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-pitch);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Jersey stripe pattern — used on the CTA band and image fallbacks */
+.jersey-stripes {
+  background-image: repeating-linear-gradient(
+    118deg,
+    transparent 0 64px,
+    var(--color-gold) 64px 78px,
+    transparent 78px 86px,
+    var(--color-amber) 86px 92px,
+    transparent 92px 170px
+  );
+}
+
+.stripe-rule {
+  height: 6px;
+  background: linear-gradient(90deg, var(--color-gold) 0 70%, transparent 70% 76%, var(--color-amber) 76% 100%);
+  transform: skewX(-28deg);
+}
+
+/* Shown when a photo is missing or fails to load */
+.img-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-pitch-2);
+  color: var(--color-smoke);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.img-fallback::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image: repeating-linear-gradient(
+    118deg,
+    transparent 0 40px,
+    var(--color-gold) 40px 48px,
+    transparent 48px 54px,
+    var(--color-amber) 54px 58px,
+    transparent 58px 110px
+  );
+}
+
+.img-fallback > * {
+  position: relative;
+}
+
+/* Modern scrollbar (Chrome, Edge, Safari): slim gold pill on jersey black */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-pitch);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-gold), var(--color-amber));
+  border: 3px solid var(--color-pitch);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  border-width: 2px;
+}
+::-webkit-scrollbar-corner {
+  background: var(--color-pitch);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Reels strip: glides left forever; the list is duplicated so -50% is a seamless loop */
+@keyframes reel-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.reel-track {
+  animation: reel-scroll 45s linear infinite;
+}
+.reel-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reel-track {
+    animation: none;
+  }
+}
