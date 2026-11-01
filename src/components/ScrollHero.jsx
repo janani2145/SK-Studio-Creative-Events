@@ -19,7 +19,7 @@ import { heroSlides } from "@/config/site";
  * Scroll-driven hero.
  * The section is tall (one screen per photo); the visible part stays pinned while you scroll.
  * Each new photo slices in along a diagonal edge, led by a gold + amber stripe —
- * the same angle and colours as the SK team jersey.
+ * the same angle and colours as the SK Creative Events team jersey.
  */
 
 const SLOPE = 34; // how far (in % of width) the wipe edge leans from top to bottom
@@ -107,7 +107,7 @@ function HeroCopy() {
         transition={{ duration: 0.6, ease }}
         className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-pitch/60 px-4 py-1.5 text-xs font-semibold tracking-wider text-gold-soft backdrop-blur-md sm:text-sm"
       >
-        ✦ SK STUDIO &amp; EVENT MANAGEMENT
+        ✦ SK CREATIVE EVENTS
       </motion.p>
 
       <h1 className="mt-5 text-[clamp(2.4rem,6vw,5.4rem)] leading-[1.04] text-ivory">
@@ -153,7 +153,7 @@ function HeroCopy() {
         transition={{ duration: 0.7, delay: 0.5 }}
         className="mt-5 max-w-xl text-base leading-relaxed text-ivory/90 sm:text-lg"
       >
-        From magical birthday themes to breathtaking wedding stages, we transform your special occasions into beautiful memories with creative designs and stunning decorations.
+From elegant wedding stages to magical birthday celebrations, we bring your dream events to life with beautiful decorations, creative themes, and unforgettable details.
       </motion.p>
 
       <motion.div

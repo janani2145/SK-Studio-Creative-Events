@@ -1,4 +1,4 @@
-# SK Studio — Creative Events website
+# SK Creative Events website
 
 Single-page Next.js 16 site (App Router) + Tailwind CSS v4 + Framer Motion.
 
@@ -47,7 +47,7 @@ Everything lives in `src/config/site.js`:
 Wedding stages in the hero and most service images are free-licence photos (Pexels, one Unsplash).
 They load online until you run `npm run fetch-stock`, which downloads them into `public/images/stock/`
 and the site switches to the local copies automatically.
-Replace them with SK Studio's own wedding/service photos when available.
+Replace them with SK Creative Events' own wedding/service photos when available.
 
 ## Videos
 

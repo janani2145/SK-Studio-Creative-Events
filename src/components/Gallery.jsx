@@ -128,17 +128,36 @@ export default function Gallery() {
                 type="button"
                 onClick={() => setOpen(i)}
                 aria-label={`View ${alt(i).toLowerCase()} larger`}
-                className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ivory-2 transition-shadow duration-300 hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.45)]"
+                className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ivory-2 outline-none ring-1 ring-ink/5 transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_26px_50px_-22px_rgba(0,0,0,0.55)] focus-visible:-translate-y-1 focus-visible:ring-2 focus-visible:ring-gold"
               >
                 <Image
                   src={p.src}
                   alt={alt(i)}
                   fill
                   sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.08] group-focus-visible:scale-[1.08]"
                 />
-                <span className="absolute inset-0 bg-pitch/0 transition-colors duration-300 group-hover:bg-pitch/20" aria-hidden="true" />
-                <Expand className="absolute right-3 top-3 h-5 w-5 text-ivory opacity-0 drop-shadow transition-opacity group-hover:opacity-100" aria-hidden="true" />
+
+                {/* Premium hover: soft shade, inner gold frame, light sweep, "View" pill bottom-left */}
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-linear-to-t from-pitch/65 via-pitch/15 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-2 scale-[0.97] rounded-xl border border-gold/0 transition-all duration-500 group-hover:scale-100 group-hover:border-gold/80 group-focus-visible:scale-100 group-focus-visible:border-gold/80 sm:inset-3"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-linear-to-r from-white/0 via-white/30 to-white/0 opacity-0 transition-all duration-[1100ms] ease-out group-hover:left-[130%] group-hover:opacity-100"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-4 left-4 inline-flex translate-y-2 items-center gap-1.5 rounded-full bg-pitch/80 px-3 py-1.5 text-xs font-semibold text-ivory opacity-0 backdrop-blur-sm transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 sm:bottom-5 sm:left-5"
+                >
+                  <Expand className="h-3.5 w-3.5 text-gold" />
+                  View
+                </span>
               </button>
             </motion.li>
           ))}

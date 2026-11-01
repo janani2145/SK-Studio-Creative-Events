@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section id="about" className="bg-ivory pt-10 pb-20 sm:pt-14 sm:pb-28" aria-labelledby="about-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+
         {/* ====================================================================
             1. INTRO: Balanced Centered Editorial Layout (Eliminates Lopsided Columns)
             ==================================================================== */}
@@ -15,7 +15,7 @@ export default function About() {
           <Reveal>
             <p className="inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-wider text-amber sm:text-sm">
               <span className="stripe-rule w-7" aria-hidden="true" />
-              ✦ About SK Studio &amp; Creative Events
+              ✦ About SK Creative Events
             </p>
             <h2 id="about-title" className="mt-6 text-[clamp(2.2rem,4.5vw,3.8rem)] font-display leading-[1.12] text-ink">
               From the stage backdrop to the return gifts, one dedicated crew handles it all.
@@ -56,8 +56,8 @@ export default function About() {
             </p>
 
             <p className="mt-8 max-w-xl leading-relaxed text-clay">
-              {founder.name} started SK with balloon arches and theme backdrops for first birthdays. Today the crew handles
-              full birthday packages, wedding stages, grand entries, DJ, catering and more, all from the studio in Kodambakkam, Chennai.
+              {founder.name} started SK Creative Events with balloon arches and theme backdrops for first birthdays. Today the crew handles
+              full birthday packages, wedding stages, grand entries, DJ, catering and more, all from our base in Kodambakkam, Chennai.
             </p>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function About() {
             ==================================================================== */}
         <div className="mt-24 sm:mt-32 rounded-[32px] border border-ink/10 bg-ivory-2/60 p-6 sm:p-10 lg:p-12 shadow-xs">
           <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
-            
+
             {/* Left: Crew Photo with Custom Badge & Callout */}
             <div className="lg:col-span-6 flex flex-col gap-5">
               <div className="relative overflow-hidden rounded-[24px] bg-pitch shadow-[0_20px_50px_-15px_rgba(0,0,0,0.35)]">
@@ -83,13 +83,13 @@ export default function About() {
                 <div className="bg-pitch p-4 text-ivory sm:absolute sm:inset-x-0 sm:bottom-0 sm:bg-transparent sm:bg-linear-to-t sm:from-pitch/95 sm:via-pitch/60 sm:to-transparent sm:p-6">
                   <div className="flex items-center gap-2 text-gold text-xs font-semibold tracking-wider uppercase">
                     <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-                    Official SK Studio Squad
+                    Official SK Creative Events Squad
                   </div>
                   <p className="mt-1 font-display text-lg sm:text-xl text-ivory">
                     Trained · Disciplined · Uniformed
                   </p>
                   <p className="text-xs text-smoke mt-0.5">
-                    Kodambakkam Studio, Chennai · Operating across Tamil Nadu
+                    Kodambakkam, Chennai · Operating across Tamil Nadu
                   </p>
                 </div>
               </div>

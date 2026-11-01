@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * SK STUDIO — CREATIVE EVENTS
+ * SK CREATIVE EVENTS
  * Ella content, photos, contact details um inga mattum thaan.
  *
  * PHOTOS:
@@ -32,9 +32,9 @@ export const stock = (key) => (localStock.includes(key) ? `/images/stock/${key}.
 
 /* ---------- Brand ---------- */
 export const brand = {
-  name: "SK Studio",
+  name: "SK Creative Events",
   fullName: "SK Creative Events",
-  descriptor: "Creative Events",
+  descriptor: "",
   tagline: "Your success is our satisfaction",
   city: "Chennai",
   serviceArea: "Chennai and across Tamil Nadu",
@@ -56,7 +56,7 @@ export const team = {
   photo: "/images/team/sk-crew-team.jpg",
   width: 1600,
   height: 1200,
-  caption: "The SK crew. If you see these jerseys at your hall, your setup is in good hands.",
+  caption: "The SK Creative Events crew. If you see these jerseys at your hall, your setup is in good hands.",
 };
 
 /* ---------- Contact ---------- */
@@ -134,19 +134,19 @@ export const birthdayPhotos = [
 export const heroSlides = [
   {
     id: "wedding",
-    image: "/images/stock/5233a3f7655f8eb27ceb9ba5aa278e99.jpg",
+    image: "/images/stock/heroslideImg.png",
     title: "Wedding and reception stages",
     theme: "Floral arches, soft drapes and a stage seat",
     className: "!object-top",
     objectPosition: "center top",
     transformOrigin: "center top",
   },
-{
-  id: "hishan",
-  image: "/images/birthdays/birthday-31.jpeg",
-  title: "Hishan Aliyar Turns One",
-  theme: "Elegant White, Gold & Silver Balloon Decoration"
-}
+  {
+    id: "hishan",
+    image: "/images/stock/heroslideImg2.png",
+    title: "Hishan Aliyar Turns One",
+    theme: "Elegant White, Gold & Silver Balloon Decoration"
+  }
 ];
 
 /* ---------- Services ---------- */
@@ -178,26 +178,26 @@ export const services = [
     name: "Grand entries",
     line: "Make the entrance the moment everyone films.",
     includes: ["Bridal entry", "Cold pyro", "Low fog", "Paper blast", "Balloon blast", "Elephant tusk entry"],
-    image: "/images/services/service-entries.jpg",
+    image: "/images/services/service-entry.png",
   },
   {
     id: "dj",
     name: "DJ music",
     line: "Sound, lights and a DJ for the dance floor.",
-    image: stock("dj"),
+    image: "/images/services/Dj.jpg",
   },
 
   {
     id: "booths",
     name: "Photo booths",
     line: "360 selfie booth and magic mirror photo booth.",
-    image: stock("photo-booth"),
+    image: "/images/services/photo-booth.png",
   },
   {
     id: "live",
     name: "Live bands",
     line: "Chenda melam, Punjabi dhol and band set.",
-    image: "/images/services/service-live-band.jpg",
+    image: "/images/services/service-live-bands.png",
   },
   {
     id: "mehndi",
@@ -209,7 +209,7 @@ export const services = [
     id: "games",
     name: "Games and entertainment",
     line: "Games, hosts and activities that keep the kids busy.",
-    image: "/images/birthdays/birthday-14.jpg",
+    image: "/images/services/Game-zone.png",
   },
 ];
 
@@ -219,7 +219,7 @@ export const reasons = [
   { title: "Themes made for your child", text: "Names, photos, colours and favourite characters printed into the setup. No reused banners." },
   { title: "Ready before guests arrive", text: "Our crew reaches hours early and finishes before the hall opens. We pack up after, too." },
   { title: "Clear quotes on WhatsApp", text: "An itemised package quote before you pay any advance. What's on the quote is what you pay." },
-  { title: "Our own trained crew", text: "The team in black and gold jerseys works for SK. Same people, same standard, every event." },
+  { title: "Our own trained crew", text: "The team in black and gold jerseys works for SK Creative Events. Same people, same standard, every event." },
   { title: "Any hall, any budget", text: "A living-room birthday or a full banquet hall. We size the package to your space and budget." },
 ];
 

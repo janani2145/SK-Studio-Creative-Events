@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
 import { brand, reasons } from "@/config/site";
 
 /*
- * The SK crest in the middle with a slowly turning ring, three reasons on each side
+ * The SK Creative Events crest in the middle with a slowly turning ring, three reasons on each side
  * pointing in towards it. On phones the crest sits on top and the reasons stack.
  */
 function Reason({ r, i, side }) {
@@ -54,7 +54,7 @@ export default function WhyUs() {
             <span className="stripe-rule w-8" aria-hidden="true" />
           </p>
           <h2 id="why-title" className="text-[clamp(2.4rem,5vw,4.4rem)] leading-[1.02]">
-            Why families book SK again
+            Why families book SK Creative Events again
           </h2>
           <p className="mt-5 text-smoke">Most bookings come from guests who saw our setup at someone else&apos;s party.</p>
         </Reveal>

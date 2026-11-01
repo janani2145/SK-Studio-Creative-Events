@@ -24,7 +24,7 @@ const manrope = localFont({
 });
 
 export const metadata = {
-  // Set NEXT_PUBLIC_SITE_URL to the live domain (eg. https://skstudioevents.in) when deploying
+  // Set NEXT_PUBLIC_SITE_URL to the live domain (eg. https://skcreativeevents.in) when deploying
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
     default: `${brand.fullName} | Birthday & Event Decoration in ${brand.city}`,
