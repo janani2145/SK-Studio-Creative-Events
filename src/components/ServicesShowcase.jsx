@@ -29,12 +29,9 @@ function Card({ s, i }) {
       transition={{ duration: 0.6, delay: (i % 4) * 0.06, ease: [0.22, 1, 0.36, 1] }}
       className={`${cell[s.feature] ?? ""} min-h-[300px] ${primary ? "min-h-[580px] sm:min-h-[620px]" : ""}`}
     >
-      <a
-        href={ask(s)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative flex h-full flex-col justify-end overflow-hidden rounded-[26px] bg-pitch text-ivory shadow-[0_20px_50px_-24px_rgba(0,0,0,0.5)]"
-      >
+    <div
+  className="group relative flex h-full flex-col justify-end overflow-hidden rounded-[26px] bg-pitch text-ivory shadow-[0_20px_50px_-24px_rgba(0,0,0,0.5)]"
+>
         <SmartImage
           src={s.image}
           alt={s.name}
@@ -65,14 +62,20 @@ function Card({ s, i }) {
             </span>
           )}
 
-          {primary && (
-            <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-pitch">
-              <WhatsAppIcon className="h-4 w-4" />
-              Ask for package prices
-            </span>
-          )}
+      {primary && (
+  <a
+    href={ask(s)}
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={(e) => e.stopPropagation()}
+    className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-pitch"
+  >
+    <WhatsAppIcon className="h-4 w-4" />
+    Ask for package prices
+  </a>
+)}
         </span>
-      </a>
+      </div>
     </motion.li>
   );
 }
