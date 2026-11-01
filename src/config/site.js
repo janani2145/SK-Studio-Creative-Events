@@ -197,13 +197,13 @@ export const services = [
     id: "live",
     name: "Live bands",
     line: "Chenda melam, Punjabi dhol and band set.",
-    image: "/images/services/service-live-bands1.png",
+    image: "/images/services/service-live-bands1.png",   
   },
   {
     id: "mehndi",
     name: "Mehandi and tattoo",
     line: "Mehandi and tattoo artists for the bride, family and guests.",
-    image: "/images/services/mehandi.png",
+    image: "/images/services/mehndi.png",
   },
   {
     id: "games",
