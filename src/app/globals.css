@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Great Vibes";
+  src: url("./fonts/GreatVibes-Regular.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Great Vibes";
+  src: url("./fonts/GreatVibes-Regular.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* SK Creative Events tokens — team jersey colours: pitch black with gold-to-amber stripes */
 @theme {
   --color-pitch: #131210;
@@ -14,7 +30,7 @@
   --color-smoke: #aaa296;
   --color-clay: #6b6256;
 
-  --font-display: var(--font-bodoni), "Bodoni Moda", Didot, Georgia, serif;
+  --font-display: "Great Vibes", cursive, sans-serif;
   --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
 }
 

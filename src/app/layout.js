@@ -7,16 +7,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import MotionProvider from "@/components/MotionProvider";
 import ScrollProgress from "@/components/ScrollProgress";
 
-// Fonts are self-hosted (src/app/fonts) so the site builds and loads without calling Google.
-const bodoni = localFont({
-  variable: "--font-bodoni",
-  display: "swap",
-  src: [
-    { path: "./fonts/bodoni-moda-latin-standard-normal.woff2", weight: "400 900", style: "normal" },
-    { path: "./fonts/bodoni-moda-latin-standard-italic.woff2", weight: "400 900", style: "italic" },
-  ],
-});
-
+// Manrope font is self-hosted (src/app/fonts)
 const manrope = localFont({
   variable: "--font-manrope",
   display: "swap",
@@ -54,7 +45,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${bodoni.variable} ${manrope.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={manrope.variable}>
       <body className="min-h-screen antialiased">
         <MotionProvider>
           <ScrollProgress />

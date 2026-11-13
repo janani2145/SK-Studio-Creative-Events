@@ -110,7 +110,7 @@ function HeroCopy() {
         ✦ SK CREATIVE EVENTS
       </motion.p>
 
-      <h1 className="mt-5 text-[clamp(2.4rem,6vw,5.4rem)] leading-[1.04] text-ivory">
+      <h1 className="mt-5 font-display text-[clamp(2.4rem,6vw,5.4rem)] leading-[1.04] text-ivory">
         <motion.span
           className="block"
           initial={{ opacity: 0, y: 30 }}
@@ -214,6 +214,18 @@ export default function ScrollHero() {
   });
 
   const hintOpacity = useTransform(scrollYProgress, [0, 0.04], [1, 0]);
+
+  // Mobile: show a "scroll down" hint once the last slide has fully wiped in
+  // (segmentFor(count - 1) ends at (count - 1) / count)
+  const lastSlideDone = (count - 1) / count;
+  const endHintOpacity = useTransform(
+    scrollYProgress,
+    [lastSlideDone, lastSlideDone + 0.03],
+    [0, 1]
+  );
+  // While the hint is invisible it must not catch taps or keyboard focus
+  const endHintVisibility = useTransform(endHintOpacity, (v) => (v > 0.01 ? "visible" : "hidden"));
+
   const current = heroSlides[active];
 
   // Reduced motion: a single still hero, no pinned scroll
@@ -274,7 +286,7 @@ export default function ScrollHero() {
           </AnimatePresence>
         </div>
 
-        {/* Scroll hint */}
+        {/* Scroll hint (desktop/tablet) */}
         <motion.div
           style={{ opacity: hintOpacity }}
           className="absolute bottom-6 left-1/2 z-[50] hidden -translate-x-1/2 items-center gap-2 text-xs text-ivory/70 sm:flex"
@@ -284,6 +296,27 @@ export default function ScrollHero() {
             <ArrowDown className="h-4 w-4 text-gold" />
           </motion.span>
           Scroll to see more setups
+        </motion.div>
+
+        {/* Mobile only: tap to jump to Services once the last slide finishes */}
+        <motion.div
+          style={{ opacity: endHintOpacity, visibility: endHintVisibility }}
+          className="absolute inset-x-0 bottom-1 z-[50] flex justify-center sm:hidden"
+        >
+          <a
+            href="#services"
+            onClick={(e) => scrollToSection("services") && e.preventDefault()}
+            aria-label="Scroll to services"
+            className="flex flex-col items-center px-4 py-2 text-xs font-medium tracking-wider text-gold"
+          >
+            Scroll
+            <motion.span
+              animate={{ y: [0, 4, 0] }}
+              transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+            >
+              <ArrowDown className="h-4 w-4 text-gold" />
+            </motion.span>
+          </a>
         </motion.div>
       </div>
     </section>
