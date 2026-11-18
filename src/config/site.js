@@ -172,7 +172,7 @@ export const services = [
     id: "entries",
     name: "Grand entries",
     line: "Make the entrance the moment everyone films.",
-       feature: "wide",
+    feature: "wide",
     includes: ["Bridal entry", "Cold pyro", "Low fog", "Paper blast", "Balloon blast", "Elephant tusk entry"],
     image: "/images/services/services-entry.png",
   },
@@ -180,7 +180,7 @@ export const services = [
     id: "catering",
     name: "Catering and snack stalls",
  
-    line: "Veg and non-veg menus, plus popcorn and cotton candy counters.",
+    line: "Veg and non-veg menus, plus popcorn and cotton candy counters. ",
     image:  "/images/services/foodImg.png",
   }, 
     {
