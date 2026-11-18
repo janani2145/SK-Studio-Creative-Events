@@ -146,9 +146,6 @@ export const heroSlides = [
     image: "/images/stock/heroslideImg3.png",
 title: "Raghavardhini Turns One",
   theme: "Pink, Purple & Rose Gold Butterfly Fairyland",
-    //   className: "!object-top",
-    // objectPosition: "center top",
-    // transformOrigin: "center top",
   }
 ];
 

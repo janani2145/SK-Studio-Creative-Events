@@ -24,6 +24,65 @@ import { heroSlides } from "@/config/site";
 
 const SLOPE = 34; // how far (in % of width) the wipe edge leans from top to bottom
 
+// On portrait screens (phones) the photo is as tall as the screen, so with object-cover
+// its rendered width is about 180vh for a 16:9 photo — far wider than 100vw.
+// Telling Next.js this makes it send a large enough file, so phones stay sharp.
+const HERO_SIZES = "(max-aspect-ratio: 1/1) 180vh, 100vw";
+const HERO_QUALITY = 90; // add `images: { qualities: [75, 90] }` in next.config.js (Next 15+)
+
+/**
+ * Renders the slide photo.
+ * If a slide has `mobileImage` (a portrait crop), phones get that file and
+ * larger screens get the normal landscape `image`.
+ */
+function SlideImage({ slide, priority = false }) {
+  const alt = `${slide.title}, ${slide.theme}`;
+  const style = slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined;
+
+  if (slide.mobileImage) {
+    return (
+      <>
+        <div className="absolute inset-0 sm:hidden">
+          <SmartImage
+            src={slide.mobileImage}
+            alt={alt}
+            label={slide.title}
+            sizes="100vw"
+            quality={HERO_QUALITY}
+            priority={priority}
+            className={slide.mobileClassName || ""}
+          />
+        </div>
+        <div className="absolute inset-0 hidden sm:block">
+          <SmartImage
+            src={slide.image}
+            alt={alt}
+            label={slide.title}
+            sizes="100vw"
+            quality={HERO_QUALITY}
+            priority={priority}
+            className={slide.className || ""}
+            style={style}
+          />
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <SmartImage
+      src={slide.image}
+      alt={alt}
+      label={slide.title}
+      sizes={HERO_SIZES}
+      quality={HERO_QUALITY}
+      priority={priority}
+      className={slide.className || ""}
+      style={style}
+    />
+  );
+}
+
 // When does slide i finish wiping in? Each slide gets one "segment" of the scroll.
 function segmentFor(i, count) {
   const seg = 1 / count;
@@ -42,20 +101,18 @@ function WipeSlide({ slide, index, count, progress }) {
   const gold = useMotionTemplate`polygon(${x1}% 0%, calc(${x1}% + 2.6vw) 0%, calc(${x2}% + 2.6vw) 100%, ${x2}% 100%)`;
   const amber = useMotionTemplate`polygon(calc(${x1}% + 3.5vw) 0%, calc(${x1}% + 4.2vw) 0%, calc(${x2}% + 4.2vw) 100%, calc(${x2}% + 3.5vw) 100%)`;
   const stripeOpacity = useTransform(wipe, [0, 0.02, 0.96, 1], [0, 1, 1, 0]);
-  const scale = useTransform(wipe, [0, 1], [1.2, 1]);
+
+  // Gentle zoom-out as the slide wipes in (kept small so the photo isn't upscaled much)
+  const scale = useTransform(wipe, [0, 1], [1.08, 1]);
 
   return (
     <>
       <motion.div className="absolute inset-0 overflow-hidden" style={{ clipPath: clip, zIndex: index * 3 }}>
-        <motion.div className="absolute inset-0" style={{ scale, transformOrigin: slide.transformOrigin || "center top" }}>
-          <SmartImage
-            src={slide.image}
-            alt={`${slide.title}, ${slide.theme}`}
-            label={slide.title}
-            sizes="100vw"
-            className={slide.className || ""}
-            style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
-          />
+        <motion.div
+          className="absolute inset-0"
+          style={{ scale, transformOrigin: slide.transformOrigin || "center top" }}
+        >
+          <SlideImage slide={slide} />
         </motion.div>
       </motion.div>
       <motion.div
@@ -73,19 +130,14 @@ function WipeSlide({ slide, index, count, progress }) {
 }
 
 function FirstSlide({ slide, progress, count }) {
-  // Slow push-in while the first photo is on screen
-  const scale = useTransform(progress, [0, 1 / count], [1.04, 1.12]);
+  // Slow, subtle push-in while the first photo is on screen
+  const scale = useTransform(progress, [0, 1 / count], [1, 1.06]);
   return (
-    <motion.div className="absolute inset-0" style={{ scale, transformOrigin: slide.transformOrigin || "center top", zIndex: 0 }}>
-      <SmartImage
-        src={slide.image}
-        alt={`${slide.title}, ${slide.theme}`}
-        label={slide.title}
-        sizes="100vw"
-        priority
-        className={slide.className || ""}
-        style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
-      />
+    <motion.div
+      className="absolute inset-0"
+      style={{ scale, transformOrigin: slide.transformOrigin || "center top", zIndex: 0 }}
+    >
+      <SlideImage slide={slide} priority />
     </motion.div>
   );
 }
@@ -153,14 +205,14 @@ function HeroCopy() {
         transition={{ duration: 0.7, delay: 0.5 }}
         className="mt-5 max-w-xl text-base leading-relaxed text-ivory/90 sm:text-lg"
       >
-From elegant wedding stages to magical birthday celebrations, we bring your dream events to life with beautiful decorations, creative themes, and unforgettable details.
+        From elegant wedding stages to magical birthday celebrations, we bring your dream events to life with beautiful decorations, creative themes, and unforgettable details.
       </motion.p>
 
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.62 }}
-        className="mt-5 hidden flex-wrap items-center gap-x-2.5 sm:inline-flex gap-y-1.5 rounded-full border border-white/10 bg-pitch/40 px-4 py-2 text-xs font-medium text-ivory/85 backdrop-blur-md sm:text-sm"
+        className="mt-5 hidden flex-wrap items-center gap-x-2.5 gap-y-1.5 rounded-full border border-white/10 bg-pitch/40 px-4 py-2 text-xs font-medium text-ivory/85 backdrop-blur-md sm:inline-flex sm:text-sm"
       >
         {heroHighlights.map((highlight, idx) => (
           <span key={highlight} className="inline-flex items-center">
@@ -232,15 +284,13 @@ export default function ScrollHero() {
   if (reduce) {
     const first = heroSlides[0];
     return (
-      <section id="home" ref={ref} aria-label="Introduction" className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-pitch">
-        <SmartImage
-          src={first.image}
-          alt={`${first.title}, ${first.theme}`}
-          label={first.title}
-          priority
-          className={first.className || ""}
-          style={first.objectPosition ? { objectPosition: first.objectPosition } : undefined}
-        />
+      <section
+        id="home"
+        ref={ref}
+        aria-label="Introduction"
+        className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-pitch"
+      >
+        <SlideImage slide={first} priority />
         <div className="absolute inset-0 bg-linear-to-r from-pitch via-pitch/70 to-pitch/10" />
         <div className="relative mx-auto w-full max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
           <HeroCopy />
@@ -250,10 +300,17 @@ export default function ScrollHero() {
   }
 
   return (
-    <section id="home" ref={ref} data-hero aria-label="Introduction" className="relative bg-pitch" style={{ height: `${count * 100}svh` }}>
+    <section
+      id="home"
+      ref={ref}
+      data-hero
+      aria-label="Introduction"
+      className="relative bg-pitch"
+      style={{ height: `${count * 100}svh` }}
+    >
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         {/* Photo stack */}
-        <div className="absolute inset-0 ">
+        <div className="absolute inset-0">
           <FirstSlide slide={heroSlides[0]} progress={scrollYProgress} count={count} />
           {heroSlides.slice(1).map((s, i) => (
             <WipeSlide key={s.id} slide={s} index={i + 1} count={count} progress={scrollYProgress} />
