@@ -134,7 +134,7 @@ export const birthdayPhotos = [
 export const heroSlides = [
   {
     id: "wedding",
-    image: "/images/stock/heroslideImg.png",
+    image: "/images/stock/Lavender Img2.png",
     title: "Wedding and reception stages",
     theme: "Floral arches, soft drapes and a stage seat",
     className: "!object-top",
@@ -143,9 +143,12 @@ export const heroSlides = [
   },
   {
     id: "hishan",
-    image: "/images/stock/heroslideImg2.png",
-    title: "Hishan Aliyar Turns One",
-    theme: "Elegant White, Gold & Silver Balloon Decoration"
+    image: "/images/stock/heroslideImg3.png",
+title: "Raghavardhini Turns One",
+  theme: "Pink, Purple & Rose Gold Butterfly Fairyland",
+    //   className: "!object-top",
+    // objectPosition: "center top",
+    // transformOrigin: "center top",
   }
 ];
 
