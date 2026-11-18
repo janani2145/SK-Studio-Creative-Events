@@ -142,10 +142,10 @@ export const heroSlides = [
     transformOrigin: "center top",
   },
   {
-    id: "hishan",
-    image: "/images/stock/heroslideImg3.png",
-title: "Raghavardhini Turns One",
-  theme: "Pink, Purple & Rose Gold Butterfly Fairyland",
+  "id": "raghavardhini",
+  "image": "/images/stock/heroslideImg4.png",
+  "title": "A Magical Birthday Celebration",
+  "theme": "Elegant Purple, Lavender & Pink Floral Butterfly Stage Decoration"
   }
 ];
 
@@ -167,18 +167,27 @@ export const services = [
     ],
     image: "/images/birthdays/birthday-17.jpg",
   },
+
   {
-    id: "catering",
-    name: "Catering and snack stalls",
-    feature: "wide",
-    line: "Veg and non-veg menus, plus popcorn and cotton candy counters.",
-    image: stock("catering"),
-  }, {
     id: "entries",
     name: "Grand entries",
     line: "Make the entrance the moment everyone films.",
+       feature: "wide",
     includes: ["Bridal entry", "Cold pyro", "Low fog", "Paper blast", "Balloon blast", "Elephant tusk entry"],
-    image: "/images/services/service-entry.png",
+    image: "/images/services/services-entry.png",
+  },
+    {
+    id: "catering",
+    name: "Catering and snack stalls",
+ 
+    line: "Veg and non-veg menus, plus popcorn and cotton candy counters.",
+    image:  "/images/services/foodImg.png",
+  }, 
+    {
+    id: "booths",
+    name: "Photo booths",
+    line: "360 selfie booth and magic mirror photo booth.",
+    image: "/images/services/photo-booth.png",
   },
   {
     id: "dj",
@@ -187,12 +196,6 @@ export const services = [
     image: "/images/services/Dj.jpg",
   },
 
-  {
-    id: "booths",
-    name: "Photo booths",
-    line: "360 selfie booth and magic mirror photo booth.",
-    image: "/images/services/photo-booth.png",
-  },
   {
     id: "live",
     name: "Live bands",
